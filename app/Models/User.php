@@ -50,4 +50,12 @@ class User extends Authenticatable
         return $this->name;
     }
 
+    public function hasOneSalesOrder(){
+        return $this->hasOne(SalesOrder::class, 'rep_id', 'u_id')->latestOfMany('so_id');
+    }
+
+    public function hasManySalesOrders(){
+        return $this->hasMany(SalesOrder::class, 'rep_id', 'u_id');
+    }
+
 }

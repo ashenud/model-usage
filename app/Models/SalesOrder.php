@@ -21,4 +21,8 @@ class SalesOrder extends Model
         'date',
     ];
 
+    public function belongedUser() {
+        return $this->belongsTo(User::class, 'rep_id');
+    }
+
 }

@@ -18,5 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [UserController::class , 'login']);
 
 Route::group(['middleware'=>['auth:api']],function(){
-    Route::post('get_sales_orders', [SalesOrderController::class , 'get']);
+
+    Route::group(['prefix' => 'sales_order'], function () {
+        Route::post('get', [SalesOrderController::class , 'get']);
+        Route::post('has_one', [SalesOrderController::class , 'hasOne']);
+        Route::post('belongs_to', [SalesOrderController::class , 'belongsTo']);
+        Route::post('has_many', [SalesOrderController::class , 'hasMany']);
+    });
+
 });
