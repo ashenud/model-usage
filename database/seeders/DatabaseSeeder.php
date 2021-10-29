@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            UserSeeder::class,
+        ]);
         Customer::factory()->count(20)->create();
         Product::factory()->count(10)->create();
         SalesOrder::factory()->count(5)->create();
