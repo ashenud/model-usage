@@ -6,6 +6,10 @@ Here I use the Larval Passport package to check model relationships using APIs. 
 
 ## Installation
 
+Here you can set up this project in two ways
+
+### 01. Normal process
+
 1. Clone this repository
     ```
     $ git clone https://github.com/ashenud/model-usage.git
@@ -34,6 +38,40 @@ Here I use the Larval Passport package to check model relationships using APIs. 
     $ php artisan serve
     ```
 
+###  02. Run in a Docker container
+
+1. Clone this repository
+    ```
+    $ git clone https://github.com/ashenud/model-usage.git
+    ```
+2. Edit configuration files.
+    ```
+    $ cd model-usage
+    $ cp .env.example .env
+    $ nano .env
+    ```
+3. Run docker containers.
+    ```
+    $ docker-compose up -d
+    ```
+4. Install backend depedencies and front end depedencies.
+    ```
+    $ docker exec -it backend composer update
+    ```
+5. Database setup and insert fake data
+    ```
+    $ docker exec -it backend php artisan migrate:fresh --seed
+    ```
+6. Generate an application key and create a passport key
+    ```
+    $ docker exec -it backend php artisan key:generate
+    $ docker exec -it backend php artisan passport:install
+    ```
+7. Give permission to storage folder
+    ```
+    $ docker exec -it backend chmod -R 777 storage
+    ```
+
 ## Usage
 
 Use postman to check requests.
@@ -41,6 +79,8 @@ Use postman to check requests.
 * Login URL
 
 > `http://127.0.0.1:8000/api/login`
+
+When using the Docker container, use 9090 as the port
 
 Credentials 
 
@@ -51,7 +91,7 @@ password :
 
 * Get stock URL
 
-> `http://127.0.0.1:8000/api/stock/get`
+> `http://127.0.0.1:8000/api/sales_order/get`
 
 Use the token you receive when logging as the authorization Bearer Token in here
 
