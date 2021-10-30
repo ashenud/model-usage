@@ -40,6 +40,19 @@ Here you can set up this project in two ways
 
 ###  02. Run in a Docker container
 
+0. Initial setup on amarzon linux 2 EC2 (Optional)
+    ```
+    $ sudo su
+    $ yum update -y
+    $ yum install -y docker
+    $ service docker start
+    $ yum update -y
+    $ yum install git -y
+    $ curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    $ chmod +x /usr/local/bin/docker-compose
+    $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    ```
+
 1. Clone this repository
     ```
     $ git clone https://github.com/ashenud/model-usage.git
