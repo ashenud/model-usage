@@ -80,7 +80,7 @@ Use postman to check requests.
 
 > `http://127.0.0.1:8000/api/login`
 
-When using the Docker container, use 9090 as the port
+When using the Docker container, use 9090 as the port, you can change it in docker compose file
 
 Credentials 
 
